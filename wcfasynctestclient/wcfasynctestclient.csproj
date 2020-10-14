@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>netcoreapp3.1;net472</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Connected Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\wcftestcontracts\wcftestcontracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework) == 'netcoreapp3.1'">
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.8.0-dev.20513.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFrameworkIdentifier) == '.NETFramework'">
+    <Reference Include="System.ServiceModel " />
+  </ItemGroup>
+
+</Project>
