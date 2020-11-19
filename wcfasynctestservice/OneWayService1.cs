@@ -7,11 +7,10 @@ namespace wcfasynctestservice
 {
     class OneWayService1 : IOneWayService1
     {
-        public void LongOneWayCall(string message)
+        public void OneWayCall()
         {
             Debug.WriteLine($"Long running one-way call start {DateTime.Now}");
-            Debug.WriteLine($"Received message {message}");
-            Thread.Sleep(15000);
+            Thread.Sleep(50);
             Debug.WriteLine($"Long running one-way call end {DateTime.Now}");
         }
     }

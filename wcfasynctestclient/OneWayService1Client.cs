@@ -1,25 +1,24 @@
-using System.ServiceModel;
-using System.ServiceModel.Channels;
+using System.ServiceModel.Description;
 using System.Threading.Tasks;
 
 namespace wcfasynctestclient
 {
     public class OneWayService1Client : ClientBase<IOneWayService1>, IOneWayService1
     {
-        public OneWayService1Client(Binding binding, EndpointAddress remoteAddress) 
-            : base(binding, remoteAddress)
+        public OneWayService1Client(ServiceEndpoint endpoint)
+            : base(endpoint)
         {
 
         }
 
-        public void LongOneWayCall(string message)
+        public void OneWayCall()
         {
-            Channel.LongOneWayCall(message);
+            Channel.OneWayCall();
         }
 
-        public Task LongOneWayCallAsync(string message)
+        public Task OneWayCallAsync()
         {
-            return Channel.LongOneWayCallAsync(message);
+            return Channel.OneWayCallAsync();
         }
     }
 }

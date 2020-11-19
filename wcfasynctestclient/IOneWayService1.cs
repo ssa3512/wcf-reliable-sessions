@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ServiceModel;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace wcfasynctestclient
 {
     [ServiceContract]
-    public interface IOneWayService1 : wcftestcontracts.IOneWayService1
+    public interface IOneWayService1 : wcftestcontracts.IOneWayService1, IDisposable
     {
         [OperationContract(IsOneWay = true)]
-        Task LongOneWayCallAsync(string message);
+        Task OneWayCallAsync();
     }
 }

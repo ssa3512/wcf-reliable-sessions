@@ -6,6 +6,6 @@ namespace wcftestcontracts
     public interface IOneWayService1
     {
         [OperationContract(IsOneWay = true)]
-        void LongOneWayCall(string message);
+        void OneWayCall();
     }
 }
