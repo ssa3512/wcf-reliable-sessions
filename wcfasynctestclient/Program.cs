@@ -10,7 +10,7 @@ namespace wcfasynctestclient
     {
         static async Task Main(string[] args)
         {
-            var nettcpBinding = new NetTcpBinding(SecurityMode.None, true);
+            var nettcpBinding = new NetTcpBinding(SecurityMode.None);
             var contract = ContractDescription.GetContract(typeof(IOneWayService1));
             var endpointAddr = new EndpointAddress("net.tcp://localhost:8733/wcfasynctestservice/OneWayService1.svc");
             var serviceEndpoint = new ServiceEndpoint(contract, nettcpBinding, endpointAddr);
@@ -21,10 +21,10 @@ namespace wcfasynctestclient
             {
                 sw.Restart();
 
-                using var client = new OneWayService1Client(serviceEndpoint);
-
-                await client.OneWayCallAsync();
-
+                using (var client = new OneWayService1Client(serviceEndpoint))
+                {
+                    client.OneWayCall();
+                }
                 sw.Stop();
                 Console.WriteLine(sw.ElapsedMilliseconds);
 

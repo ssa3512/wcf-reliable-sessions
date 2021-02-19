@@ -10,7 +10,7 @@ namespace wcfasynctestservice
         public void OneWayCall()
         {
             Debug.WriteLine($"Long running one-way call start {DateTime.Now}");
-            Thread.Sleep(50);
+            Thread.Sleep(5000);
             Debug.WriteLine($"Long running one-way call end {DateTime.Now}");
         }
     }
